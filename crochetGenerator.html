@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700, 800,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="crochetGenerator.css">
+    </head>
+    <title>Crochet Pattern Generator</title>
+<body>
+	<div id="main">
+		<div id="editor"; class="editColumn">
+			<div id="patternMode">
+				<span style="font-weight: 700; color: #666">Pattern Mode</span>
+				<label class="container">Randomize
+				  <input type="radio" checked="checked" name="radioPattern" id="randomizeMode">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container">Normal
+				  <input type="radio" name="radioPattern" id="normalMode">
+				  <span class="checkmark"></span>
+				</label>
+			</div>
+
+			<div id="constructionMode">
+				<span style="font-weight: 700; color: #666;">Construction Mode</span>
+				<label class="container">Rounds
+				  <input type="radio" checked="checked" name="radioConstruction" id="roundsMode">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container">Rows (COMING SOON)
+				  <input type="radio" name="radioConstruction" id="rowsMode">
+				  <span class="checkmark"></span>
+				</label>
+			</div>
+			
+			<span style="font-weight: 700; color: #666;">Number of initial stitches</span>
+			<div id="slidecontainer">
+				<input type="range" min="3" max="10" value="8" class="slider" id="myRangeStitch">
+				<p>Value: <span id="demoStitch"></span></p>
+			</div>
+
+			<span style="font-weight: 700; color: #666;">Number of rows or rounds</span>
+			<div id="slidecontainer">
+				<input type="range" min="3" max="10" value="8" class="slider" id="myRangeRow">
+				<p>Value: <span id="demoRow"></span></p>
+			</div>
+			<div><button onclick="generate()" class="mainButton" id="generateButton">GENERATE</button></div>
+			<div style="padding-top: 50px; width: 90%;">
+			<span style="font-weight: 700; color: #666;">Word Pattern</span>
+			<div id="patternDiv"></div>
+			<!-- <ol id="patternDisplay">
+				<li>Pattern listed here</li>
+				<li>Other pattern</li>
+				<li></li>
+			</ol> -->
+
+
+<!-- 			<p id="patternDisplay">This is where the pattern will be displayed </p>
+ -->			<!-- <p style="font-size: 14px">
+				1. Description of the word pattern here <br> 
+				2. consectetuer adipiscing elit, sed diam <br>
+				3. ut laoreet dolore magna aliquam erat volutpat <br>
+				4. veniam, quis nostrud exerci tation ullamcorper <br>
+				5. suscipit lobortis nisl ut aliquip ex ea commodo<br>
+				6. consequat. Duis autem vel eum iriure <br>
+				7. dolor in hendrerit in vulputate.<br>
+				8. onsectetuer adipiscing elit, sed diam <br>
+			</p> -->
+			</div>
+			<div><button class="mainButton">SAVE</button></div>
+		</div>
+		<!-- <div id="debugger"></div> -->
+		<div id="pattern"; style="background: #fff; width: 75%; height: 100%; float: left; position: relative;">
+			<!-- <img src="pattern.png" style="width: 60%;  display: block; margin: auto; padding-top: 3%"> -->
+			<!-- This is where the dynamic pattern would go -->
+		</div>
+	</div>
+
+	
+
+    <script src="editCrochet.js"></script>
+    <script src="visCrochet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+    <!-- <script>
+	  var sketch = function(p) {
+	    p.setup = function(){
+	      p.createCanvas(500, 500);
+	      p.background(0);
+	    }
+	  };
+	  new p5(sketch, "pattern");
+  	</script> -->
+
+</body>
+
+
+
+</html>
