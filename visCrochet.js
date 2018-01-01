@@ -224,7 +224,7 @@ function CrochetRound(basicStitch, specialStitch) {
       push();
       var ang = j*TWO_PI/num;
       rotate(ang);
-      scale(0.15);
+      scale(0.2);
       image(this.basic,0,-radius);
       pop();
     }
@@ -237,14 +237,14 @@ function CrochetRound(basicStitch, specialStitch) {
       if (j%2 == 1) {
         push();
         rotate(ang);
-        scale(0.15);
+        scale(0.2);
         image(this.basic, 0, -radius);
         pop();
       }
       else {
         push();
         rotate(ang);
-        scale(0.15);
+        scale(0.2);
         image(this.special, 0, -radius);
         pop();
       }
@@ -257,7 +257,7 @@ function CrochetRound(basicStitch, specialStitch) {
         var ang = j*(TWO_PI/num);
         push();
         rotate(ang);
-        scale(0.15);
+        scale(0.2);
         image(this.basic, 0, -radius);
         pop();
       }
@@ -268,7 +268,7 @@ function CrochetRound(basicStitch, specialStitch) {
         var ang = j*(TWO_PI/(num/2));
         push();
         rotate(ang);
-        scale(0.15);
+        scale(0.2);
         image(this.special, 0, -radius);
         pop();
       }
@@ -279,14 +279,14 @@ function CrochetRound(basicStitch, specialStitch) {
         if (j%(incCounter-1) != 0) {
           push();
           rotate(ang);
-          scale(0.15);
+          scale(0.2);
           image(this.basic, 0, -radius);
           pop();
         }
         else {
           push();
           rotate(ang);
-          scale(0.15);
+          scale(0.2);
           image(this.special, 0, -radius);
           pop();
         }
