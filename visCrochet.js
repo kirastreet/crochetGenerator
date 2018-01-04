@@ -66,11 +66,11 @@ function preload() {
 }
 
 function setup() {
-  if (windowWidth > 800) {
+  if (windowWidth >= 800) {
     createCanvas(3*windowWidth/4, windowHeight); 
   }
   else {
-    createCanvas(windowWidth, 6*windowHeight/5);
+    createCanvas(windowWidth, windowHeight);
   }
   
   stitches[0] = chain;
