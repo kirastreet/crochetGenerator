@@ -37,7 +37,7 @@ var helper = false;
 
 //var initStitchNum = 6;
 //var equivInitStitchNum;
-//var saveNum = 1;
+var saveNum = 1;
 var incCounter; // keeps track of the number of increase rounds
 // var incNum;
 // var stitchInd; //variable for the random stitch index
@@ -46,10 +46,11 @@ var incCounter; // keeps track of the number of increase rounds
 // var specialStitchInd;
 // var incChange;
 
-var r = 210;
+var r = 190;
 var i;
 
 var replaceCheck = false;
+var stitchScale = 0.2;
 
 
 function preload() {
@@ -65,8 +66,12 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(3*windowWidth/4, windowHeight);  
-  
+  if (windowWidth > 800) {
+    createCanvas(3*windowWidth/4, windowHeight); 
+  }
+  else {
+    createCanvas(windowWidth, 6*windowHeight/5);
+  }
   
   stitches[0] = chain;
   stitches[1] = sc;
@@ -105,11 +110,20 @@ function setup() {
 
 function draw() {
   background(255);
-  incCounter = 1;
+  incCounter = 1; // setting up all the variables
   var initStitchNum = sliderStitch.value;
   var rows = sliderRow.value; // number of rows
   var pattern = " ";
   var patternArray = [];
+  if (windowWidth <= 800) {
+    stitchScale = 0.1;
+    r = 150; 
+  }
+  else {
+    stitchScale = 0.2;
+    r = 190; 
+  }
+
 
   //var rows = 8;
 
@@ -123,10 +137,6 @@ function draw() {
   noStroke();
   push();
   translate(width/2, height/2);
-  // image(chain, 0, 0);
-  // image(sc, 0, 100);
-  // image(dc, 0, 200);
-  // image(puff, 0, 300);
 
   for (i = 1; i <= rows; i++) {
     var stitchInd = round(random(0,stitches.length-1));
@@ -144,11 +154,32 @@ function draw() {
     //   var equivInitStitchNum = incChange;
     //   var incChange = incChange*equivNum[stitchInd];
     //   }
+
     // NORMAL
     var radioCheck = document.getElementById("randomizeMode").checked;
     if (!radioCheck) {
       var doubleIncrease = new CrochetRound(basicStitches[2], basicStitches[3]);
       doubleIncrease.increaseRound(incNum, i*r, initStitchNum);
+      var incSpace = i - 2;
+
+      if (i == 1) {
+        pattern = "Repeat around " + initStitchNum + " double crochet stitches";
+      }
+      else if (i == 2){
+         pattern = "Repeat around " + initStitchNum + " two double crochet stitches";
+      }
+      else {
+         pattern = "Repeat around " + incSpace + " double crochet stitches and 1 two double crochet stitch";
+      }
+
+      patternArray.push(pattern);
+      pLen = patternArray.length;
+      listText = "<ol>";
+      for (var j = 0; j < pLen; j++) {
+        listText += "<li>" + patternArray[j] + "</li>";
+      }
+      listText += "</ol>";
+      document.getElementById("patternDiv").innerHTML = listText;
     }
 
     //document.getElementById("patternDiv");
@@ -156,26 +187,6 @@ function draw() {
 
     
     //RANDOM
-    // else if (radioCheck) {
-
-    //   var chainRound = new CrochetRound(stitches[stitchInd], stitches[stitchIndTwo]);
-    //   chainRound.repeatAround(incNum, i*r);
-
-    //     var patternRow = document.createElement("p");
-    //     pattern = i + ". " + incNum + " " + stitchNames[stitchInd] + " stitches\n";
-    //     var rowNum = document.createTextNode(pattern);
-    //   //var rowNum = document.createTextNode("here");
-
-    //   //var item = document.getElementById("patternDisplay").childNodes[i-1];
-    //   //item.replaceChild(rowNum, item.childNodes[i-1]);
-
-    //     patternRow.appendChild(rowNum);
-
-    //     var parent = document.getElementById("patternDiv");
-    //     parent.appendChild(patternRow);
-
-    // }
-
     else if (radioCheck) {
       
       var chainRound = new CrochetRound(stitches[stitchInd], stitches[stitchIndTwo]);
@@ -211,6 +222,11 @@ function generate() {
   redraw();
 }
 
+function savePattern() {
+  save("crochet pattern" + saveNum + ".png");
+  saveNum++;
+}
+
 /////////////////////////////////////////// THE CROCHET CLASS /////////////////////////////////////////
 function CrochetRound(basicStitch, specialStitch) {
   
@@ -224,7 +240,7 @@ function CrochetRound(basicStitch, specialStitch) {
       push();
       var ang = j*TWO_PI/num;
       rotate(ang);
-      scale(0.2);
+      scale(stitchScale);
       image(this.basic,0,-radius);
       pop();
     }
@@ -237,14 +253,14 @@ function CrochetRound(basicStitch, specialStitch) {
       if (j%2 == 1) {
         push();
         rotate(ang);
-        scale(0.2);
+        scale(stitchScale);
         image(this.basic, 0, -radius);
         pop();
       }
       else {
         push();
         rotate(ang);
-        scale(0.2);
+        scale(stitchScale);
         image(this.special, 0, -radius);
         pop();
       }
@@ -257,7 +273,7 @@ function CrochetRound(basicStitch, specialStitch) {
         var ang = j*(TWO_PI/num);
         push();
         rotate(ang);
-        scale(0.2);
+        scale(stitchScale);
         image(this.basic, 0, -radius);
         pop();
       }
@@ -268,7 +284,7 @@ function CrochetRound(basicStitch, specialStitch) {
         var ang = j*(TWO_PI/(num/2));
         push();
         rotate(ang);
-        scale(0.2);
+        scale(stitchScale);
         image(this.special, 0, -radius);
         pop();
       }
@@ -279,14 +295,14 @@ function CrochetRound(basicStitch, specialStitch) {
         if (j%(incCounter-1) != 0) {
           push();
           rotate(ang);
-          scale(0.2);
+          scale(stitchScale);
           image(this.basic, 0, -radius);
           pop();
         }
         else {
           push();
           rotate(ang);
-          scale(0.2);
+          scale(stitchScale);
           image(this.special, 0, -radius);
           pop();
         }
