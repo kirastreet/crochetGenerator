@@ -70,7 +70,7 @@ function setup() {
     createCanvas(3*windowWidth/4, windowHeight); 
   }
   else if (windowWidth >= 1800) { // for large desktop
-    createCanvas(3*windowWidth/4, windowHeight);
+    createCanvas(2.4*windowWidth/4, windowHeight);
   }
   else { // for mobile
     createCanvas(windowWidth, 6*windowHeight/5);
