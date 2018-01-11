@@ -7,7 +7,7 @@ var outputRow = document.getElementById("demoRow");
 outputStitch.innerHTML = sliderStitch.value;
 outputRow.innerHTML = sliderRow.value;
 
-document.getElementById("rowsMode").disabled = true;
+// document.getElementById("rowsMode").disabled = true;
 
 
 // Get the modal

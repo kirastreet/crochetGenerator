@@ -66,11 +66,14 @@ function preload() {
 }
 
 function setup() {
-  if (windowWidth >= 800) {
+  if (windowWidth >= 800) { // for desktop
     createCanvas(3*windowWidth/4, windowHeight); 
   }
-  else {
-    createCanvas(windowWidth, windowHeight);
+  else if (windowWidth >= 1800) { // for large desktop
+    createCanvas(2.5*windowWidth/4, windowHeight);
+  }
+  else { // for mobile
+    createCanvas(windowWidth, 6*windowHeight/5);
   }
   
   stitches[0] = chain;
@@ -115,6 +118,10 @@ function draw() {
   var rows = sliderRow.value; // number of rows
   var pattern = " ";
   var patternArray = [];
+
+  var randomCheck = document.getElementById("randomizeMode").checked;
+  var roundCheck = document.getElementById("roundsMode").checked;
+
   if (windowWidth <= 800) {
     stitchScale = 0.1;
     r = 150; 
@@ -136,13 +143,19 @@ function draw() {
   noFill();
   noStroke();
   push();
-  translate(width/2, height/2);
+  if (roundCheck) {
+    translate(width/2, height/2);
+  }
+  else {
+    translate(100, 500);
+  }
 
   for (i = 1; i <= rows; i++) {
     var stitchInd = round(random(0,stitches.length-1));
     var stitchIndTwo = round(random(0,stitches.length-1));
     //var basicStitchInd = round(random(0,basicStitches.length-1));
     //var specialStitchInd = round(random(0,specialStitches.length-1));
+
     var incNum = i*initStitchNum;
     //var stitchNum = incNum*equivNum[stitchInd];
 
@@ -155,9 +168,9 @@ function draw() {
     //   var incChange = incChange*equivNum[stitchInd];
     //   }
 
-    // NORMAL
-    var radioCheck = document.getElementById("randomizeMode").checked;
-    if (!radioCheck) {
+    // NORMAL AND ROUND
+    
+    if (!randomCheck && roundCheck) {
       var doubleIncrease = new CrochetRound(basicStitches[2], basicStitches[3]);
       doubleIncrease.increaseRound(incNum, i*r, initStitchNum);
       var incSpace = i - 2;
@@ -186,8 +199,8 @@ function draw() {
     //pattern = "Round " + i + ": " + incNum + " " + stitchNames[stitchInd] + " stitches\n"; PATTERN STYLE
 
     
-    //RANDOM
-    else if (radioCheck) {
+    //RANDOM AND ROUNDS
+    else if (randomCheck && roundCheck) {
       
       var chainRound = new CrochetRound(stitches[stitchInd], stitches[stitchIndTwo]);
       chainRound.repeatAround(incNum, i*r);
@@ -201,7 +214,41 @@ function draw() {
       }
       listText += "</ol>";
       document.getElementById("patternDiv").innerHTML = listText;
+    }
 
+    //NORMAL AND ROWS
+    else if (!randomCheck && !roundCheck) {
+      var doubleIncrease = new CrochetRound(basicStitches[2], basicStitches[3]);
+      doubleIncrease.rowRepeat(initStitchNum, i*r);
+      var incSpace = i - 2;
+
+      pattern = initStitchNum + " " + basicStitchesNames[2] + " stitches\n";
+
+      patternArray.push(pattern);
+      pLen = patternArray.length;
+      listText = "<ol>";
+      for (var j = 0; j < pLen; j++) {
+        listText += "<li>" + patternArray[j] + "</li>";
+      }
+      listText += "</ol>";
+      document.getElementById("patternDiv").innerHTML = listText;
+    }
+
+    //RANDOM AND ROWS
+    else if (randomCheck && !roundCheck) {
+      
+      var chainRound = new CrochetRound(stitches[stitchInd], stitches[stitchIndTwo]);
+      chainRound.rowRepeat(initStitchNum, i*r);
+
+      pattern = initStitchNum + " " + stitchNames[stitchInd] + " stitches\n";
+      patternArray.push(pattern);
+      pLen = patternArray.length;
+      listText = "<ol>";
+      for (var j = 0; j < pLen; j++) {
+        listText += "<li>" + patternArray[j] + "</li>";
+      }
+      listText += "</ol>";
+      document.getElementById("patternDiv").innerHTML = listText;
     }
     
     incCounter++;
@@ -242,6 +289,21 @@ function CrochetRound(basicStitch, specialStitch) {
       rotate(ang);
       scale(stitchScale);
       image(this.basic,0,-radius);
+      pop();
+    }
+  }
+
+  // For rows. input the number of stitches and the row distance
+  this.rowRepeat = function(num, dist) {
+    for (var j = 0; j < num; j++) {
+      push();
+      var x = 70*j;
+      //translate(-300, 150);
+      //translate(-250-10*num/2, 150+10*num/2);
+      //translate(x*num/2, -10*num/2);
+      translate(x, 0);
+      scale(0.2);
+      image(this.basic, 0, -dist);
       pop();
     }
   }
