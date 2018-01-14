@@ -66,14 +66,21 @@ function preload() {
 }
 
 function setup() {
-  if (windowWidth >= 800) { // for desktop
+  if (windowWidth > 800) { // for desktop
     createCanvas(3*windowWidth/4, windowHeight); 
+    stitchScale = 0.2;
+    r = 190; 
   }
   else if (windowWidth >= 1800) { // for large desktop
     createCanvas(2.4*windowWidth/4, windowHeight);
+    stitchScale = 0.2;
+    r = 190; 
   }
   else { // for mobile
-    createCanvas(windowWidth, 6*windowHeight/5);
+    //createCanvas(windowWidth, 6*windowHeight/5);
+    createCanvas(windowWidth, windowHeight);
+    stitchScale = 0.12;
+    r = 150; 
   }
   
   stitches[0] = chain;
@@ -121,15 +128,6 @@ function draw() {
 
   var randomCheck = document.getElementById("randomizeMode").checked;
   var roundCheck = document.getElementById("roundsMode").checked;
-
-  if (windowWidth <= 800) {
-    stitchScale = 0.1;
-    r = 150; 
-  }
-  else {
-    stitchScale = 0.2;
-    r = 190; 
-  }
 
 
   //var rows = 8;
