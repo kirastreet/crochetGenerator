@@ -1,0 +1,63 @@
+/* UPLOADED TO GITHUB */
+
+@media only screen and (max-width: 800px) {
+	body {
+		background: url("generatorImageBG.png") no-repeat;
+		background-size: auto 100%;
+		margin-top: 10%;
+	}
+	#landingPage {
+		font-family: 'Raleway', sans-serif; 
+		text-align: center; 
+		color: #fff; 
+		height: 100%;
+	}
+	#bodyText{
+		margin: auto; 
+		width: 75%
+	}
+}
+
+@media only screen and (min-width: 801px) {
+
+	body {
+		background: url("generatorImageBG.png") no-repeat;
+		background-size: 100% auto;
+		margin: 10%;
+	}
+
+	#landingPage {
+		font-family: 'Raleway', sans-serif; 
+		text-align: center; 
+		color: #fff; 
+		height: 100%;
+	}
+
+	#bodyText{
+		margin: auto; 
+		width: 50%
+	}
+}
+
+.begin {
+	background-color: white;
+    border: 1px solid #666;
+    border-radius: 7px;
+    width: 200px;
+    color: #666;
+    padding: 15px 32px;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.begin:hover {
+    background-color: #666; /* Green */
+    border: 1px solid #666;
+    color: white;
+}
+
+
