@@ -1,3 +1,6 @@
+/*MOST UPDATED CODE IS ON THE GITHUB!!!!!!*/
+
+
 /*Everything related to the responsiveness -------------------------------------*/
 /** {
     box-sizing: border-box;
@@ -8,22 +11,26 @@
     display: block;
 }
 /*Default is for mobile*/
-[class*="col-"] {
+/*[class*="col-"] {
     width: 100%;
-}
+}*/
 
-@media only screen and (max-width: 800) {
+@media only screen and (max-width: 800px) {
     body { 
         font-size: 60%;
         overflow: auto;
     }
-
+    [class*="col-"] {
+        width: 100%;
+    }
 }
 
-@media only screen and (min-width: 801px) {
+/*Only include styles for mobile under here*/
+@media only screen and (min-width: 801px) { 
      /*For desktop: */
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
+    .col-2a {width: 18%;}
     .col-3 {width: 25%;}
     .col-4 {width: 33.33%;}
     .col-5 {width: 41.66%;}
@@ -36,7 +43,17 @@
     .col-12 {width: 100%;}
 }
 
+h1 {
+    font-weight: 700; 
+    font-size: 200%; 
+    color: #666
+}
 
+h2 {
+    font-weight: 700; 
+    font-size: 100%;
+    color: #666
+}
 
 .editColumn {
 	font-family: 'Raleway', sans-serif; 
@@ -44,12 +61,11 @@
 	text-align: left; 
 	float: left; 
 	padding-left: 30px;
-	padding-top: 30px;
+	/*padding-top: 5px;*/
     padding-right: 30px;
-	/*width: 18%; */
+	/*width: 18%;*/
 	height: 100%; 
 	background: #fff;
-	overflow: auto;
 	border-right: 1px solid #666;
 	border-right-style: dotted;
 }
@@ -59,14 +75,15 @@
 	background-color: white;
     border: 1px solid #666;
     border-radius: 7px;
-    width: 70%;
+    width: 40%;
     color: #666;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     align-items: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 100%;
+    font-size: 70%;
+    font-weight: bold;
     margin: 4px 2px;
     cursor: pointer;
 }
@@ -75,23 +92,33 @@
     border: 1px solid #666;
     color: white;
 }
+
+@media only screen and (max-width: 800) {
+    
+}
+
 .smallButton {
     font-family: 'Raleway', sans-serif; 
+    /*position: absolute;*/
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     background-color: white;
     border: 1px solid #666;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     color: #666;
     padding: 10px;
+    margin-left: 2%;
+    margin-top: 2%;
     text-align: center;
     line-height: 80%;
     align-items: center;
     text-decoration: none;
-    display: inline-block;
+    display: inline;
     font-size: 24px;
-    /*margin: 2px;*/
-    cursor: pointer;
+    cursor: pointer;   
 }
 .smallButton:hover {
     background-color: #666;
@@ -146,9 +173,9 @@
 .container {
     display: block;
     position: relative;
-    padding-left: 40px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    padding-left: 15%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     cursor: pointer;
     font-size: 100%;
     font-weight: 400;
@@ -213,7 +240,7 @@
 /*Styles for sliders*/
 #slidecontainer {
     width: 80%;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .slider {
     -webkit-appearance: none;

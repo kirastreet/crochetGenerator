@@ -1,3 +1,5 @@
+<!-- Updated here -->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,111 +10,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <body>
-	<div id="main">
-		<div id="editor"; class="col-2 editColumn">
-			<div id="patternMode">
-				<div style="font-weight: 700; font-size: 200%; color: #666">GENERATIVE CROCHET<br><br> </div>
-				<span style="font-weight: 700; color: #666">Pattern Mode</span>
-				<label class="container">Randomize
-				  <input type="radio" checked="checked" name="radioPattern" id="randomizeMode">
-				  <span class="checkmark"></span>
-				</label>
-				<label class="container">Normal
-				  <input type="radio" name="radioPattern" id="normalMode">
-				  <span class="checkmark"></span>
-				</label>
-			</div>
+	<div class="col-2a editColumn">
 
-			<div id="constructionMode">
-				<span style="font-weight: 700; color: #666;">Construction Mode</span>
-				<label class="container">Rounds
-				  <input type="radio" checked="checked" name="radioConstruction" id="roundsMode">
-				  <span class="checkmark"></span>
-				</label>
-				<label class="container">Rows
-				  <input type="radio" name="radioConstruction" id="rowsMode">
-				  <span class="checkmark"></span>
-				</label>
-			</div>
-			
-			<span style="font-weight: 700; color: #666;">Number of initial stitches</span>
-			<div id="slidecontainer">
-				<input type="range" min="3" max="10" value="8" class="slider" id="myRangeStitch">
-				<p>Value: <span id="demoStitch"></span></p>
-			</div>
+		<h1> GENERATIVE CROCHET</h1>
 
-			<span style="font-weight: 700; color: #666;">Number of rows or rounds</span>
-			<div id="slidecontainer">
-				<input type="range" min="3" max="10" value="8" class="slider" id="myRangeRow">
-				<p>Value: <span id="demoRow"></span></p>
-			</div>
-			<div><button onclick="generate()" class="mainButton" id="generateButton">GENERATE</button></div>
+		<div id="patternMobile"></div>
 
-			<div style="padding-top: 50px; width: 90%;">
-			<span style="font-weight: 700; color: #666;">Word Pattern</span>
-			
-			<div id="patternDiv"></div> <!-- for the word pattern javascript -->
-			</div>
-
-			<div><button onclick="savePattern()" class="mainButton" id="saveButton">SAVE</button></div>
-		</div>
-		<!-- <div id="debugger"></div> -->
+		<h2>Pattern Mode</h2>
+		<label class="container">Randomize
+		  <input type="radio" checked="checked" name="radioPattern" id="randomizeMode">
+		  <span class="checkmark"></span>
+		</label>
+		<label class="container">Normal
+		  <input type="radio" name="radioPattern" id="normalMode">
+		  <span class="checkmark"></span>
+		</label>
 
 		
-		<!-- where the pattern is visualized -->
-		<div id="patternDiv"; class="col-9"> 
-			<div class="smallButton"; id="myBtn"; style="margin: 2%;">?</div>
-			<div id="pattern"></div>
-			<div id="myModal" class="modal">
-
-				  <!-- Modal content -->
-				  <div class="modal-content">
-				    <span class="close">&times;</span>
-				    <p>
-					For support or more detailed help, please contact me at <a href="mailto:generativecrochet@gmail.com?subject=Generator%20Inquiry">generativecrochet@gmail.com</a>.
-					    <br><br>
-				    Generate your own crochet patterns and discover new forms. Experiment with materials, colors, and scales.
-				    <br><br>
-				    For more info on this project, visit the project website <a href="http://generativecrochet.com/">here</a>.
-				    <br><br>
-				    <span class="heading">PATTERN MODE:</span>
-				    <br>
-				    Randomize - Each round has a random stitch <br>
-				    Normal - Each round increases normally using double crochet stitches<br><br>
-				    <span class="heading">CONSTRUCTION MODE:</span> 
-				    <br>
-				    Rounds - work in the round<br>
-				    Rows - working in a zig zag in straight stitches
-				    <br><br>
-				    <span class="heading">Number of initial stitches:</span>
-				    <br>
-				    Indicates the number of the stitches in the first round or row. The pattern can start with a chain circle or magic circle, whichever you're more comfortable with. Minimum of 4, maximum of 10.
-				    <br><br>
-				    <span class="heading">Number of rows or rounds:</span>
-				    <br>
-				    Indicates how many repeated rows or rounds you have. Minimum of 3, maximum of 10.
-				    <br><br>
-				    <span class="heading">GENERATE</span>
-				    <br>
-				    If you change anything, click the Generate button to generate a new pattern. You can also keep clicking it with the same settings to get a different pattern with the same settings.
-				    <br><br>
-				    <span class="heading">Word Pattern</span>
-				    <br>
-				    Here, you can see a basic word pattern showing how many of what kinds of stitches are in each row or round.
-				    <br><br>
-				    <span class="heading">SAVE</span> 
-				    <br>
-				    Download a picture of the pattern to your computer with the Save button. It will save as crochetpatternXX.png. On mobile, it's best to take a screenshot.
-				    <br><br>
-				    TIP: 
-				    <br>
-				    Think of these patterns as a guide. You don't have to follow them exactly if you don't want to. Change the stitches or the number of stitches in each row or round. Make the pattern your own.
-					</p>
-				  </div>
-
-				</div>
-			<!-- This is where the dynamic pattern would go -->
+		<h2>Construction Mode</h2>
+		<label class="container">Rounds
+		  <input type="radio" checked="checked" name="radioConstruction" id="roundsMode">
+		  <span class="checkmark"></span>
+		</label>
+		<label class="container">Rows
+		  <input type="radio" name="radioConstruction" id="rowsMode">
+		  <span class="checkmark"></span>
+		</label>
+		<br>
+		<span style="font-weight: 700; color: #666;">Number of initial stitches</span>
+		<div id="slidecontainer">
+			<input type="range" min="3" max="10" value="8" class="slider" id="myRangeStitch">
+			Value: <span id="demoStitch"></span>
 		</div>
+		<br>
+		<span style="font-weight: 700; color: #666;">Number of rows or rounds</span>
+		<div id="slidecontainer">
+			<input type="range" min="3" max="10" value="8" class="slider" id="myRangeRow">
+			Value: <span id="demoRow"></span>
+		</div>
+		<br>
+		<div>
+			<button onclick="generate()" class="mainButton" id="generateButton">GENERATE</button>
+			<!-- <button onclick="savePattern()" class="mainButton" id="saveButton">SAVE</button> -->
+		</div>
+		<br>
+		<div style="width: 100%;">
+		<span style="font-weight: 700; color: #666;">Word Pattern</span>
+		
+		<div id="patternDiv"></div> <!-- for the word pattern javascript -->
+		</div>
+	</div>
+
+	
+	<!-- where the pattern and stitches are visualized -->
+	<div style="background-color: #bbb;" class="col-12";> 
+		<button class="smallButton"; id="myBtn">?</button> <!-- help button -->
+		<div id="pattern"></div>
+
+		<div id="myModal" class="modal"> <!-- The help modal -->
+
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+			    <p>
+			    Generate your own crochet patterns and discover new forms. Experiment with materials, colors, and scales.
+			    <br><br>
+			    <!-- UNCOMMENT FOR THE FINAL SITE. NOT SHOWN FOR THE EXHIBITION -->
+			    <!-- For more info on this project, visit the project website <a href="http://generativecrochet.com/">here</a>.
+			    <br><br> -->
+
+			    <span class="heading">PATTERN MODE:</span>
+			    <br>
+			    Randomize - Each round or row has a random stitch <br>
+			    Normal - Each round or row increases normally using double crochet stitches<br><br>
+			    <span class="heading">CONSTRUCTION MODE:</span> 
+			    <br>
+			    Rounds - work in the round<br>
+			    Rows - working in a zig zag in straight stitches
+			    <br><br>
+			    <span class="heading">Number of initial stitches:</span>
+			    <br>
+			    Indicates the number of the stitches in the first round or row. You can start with a chain circle or magic circle, whichever you're more comfortable with. Minimum of 4, maximum of 10.
+			    <br><br>
+			    <span class="heading">Number of rows or rounds:</span>
+			    <br>
+			    Indicates how many repeated rows or rounds you have. Minimum of 3, maximum of 10.
+			    <br><br>
+			    <span class="heading">GENERATE:</span>
+			    <br>
+			    If you change anything, click the GENERATE button to generate a new pattern. You can also keep clicking it with the same settings to get a different pattern with the same settings.
+			    <br><br>
+			    <span class="heading">SAVE</span> 
+			    <br>
+			    Download a picture of the pattern to your computer with the SAVE button. It will save as crochetpatternXX.png.
+			    <br><br>
+			    <span class="heading">Word Pattern:</span>
+			    <br>
+			    Here, you can see a basic word pattern showing how many of what kinds of stitches are in each row or round.
+			    <br><br>
+			    TIP: 
+			    <br>
+			    Think of these patterns as a guide. You don't have to follow them exactly if you don't want to. Change the stitches or the number of stitches in each row or round. Make the pattern your own.
+				</p>
+			  </div>
+
+			</div>
 	</div>
 
     <script src="editCrochet.js"></script>
