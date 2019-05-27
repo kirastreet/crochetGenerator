@@ -23,6 +23,18 @@
     [class*="col-"] {
         width: 100%;
     }
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        bottom: 90px;
+        right: 10%;
+        z-index: 1; /* Sit on top */
+        width: 80%;
+        height: 40%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: #F9ECE3;
+        font-size: 150%;
+    }
 }
 
 /*Only include styles for mobile under here*/
@@ -41,7 +53,38 @@
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        bottom: 90px;
+        right: 10%;
+        z-index: 1; /* Sit on top */
+        width: 20%;
+        height: 40%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: #F9ECE3;
+    }
 }
+
+#header {
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    background: #F9ECE3;
+    color: #040707;
+    /*padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 156px;*/
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 15%;
+    /*padding-right: 156px;*/
+    height: 50px;
+}
+
+#siteHeader {
+    float: right;
+}
+
 
 h1 {
     font-weight: 700; 
@@ -50,132 +93,42 @@ h1 {
 }
 
 h2 {
-    font-weight: 700; 
+    font-weight: 400; 
     font-size: 100%;
-    color: #666
+    font-style: italic;
+    color: #040707
 }
 
-.editColumn {
+#editColumn {
 	font-family: 'Raleway', sans-serif; 
 	position: relative; 
 	text-align: left; 
-	float: left; 
-	padding-left: 30px;
-	/*padding-top: 5px;*/
-    padding-right: 30px;
-	/*width: 18%;*/
-	height: 100%; 
-	background: #fff;
-	border-right: 1px solid #666;
-	border-right-style: dotted;
+	/*float: left; */
+	margin-left: 15%;
+    /*margin-right: 156px;*/
+	padding-top: 2%;
+	width: 85%; 
+	/*background: #e6e6e6;*/
+	/*border-bottom: 1px solid #666;
+	border-bottom-style: dotted;*/
 }
 
-.mainButton {
-    font-family: 'Raleway', sans-serif; 
-	background-color: white;
-    border: 1px solid #666;
-    border-radius: 7px;
-    width: 40%;
-    color: #666;
-    padding: 10px;
-    text-align: center;
-    align-items: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 70%;
-    font-weight: bold;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-.mainButton:hover {
-    background-color: #666;
-    border: 1px solid #666;
-    color: white;
+.parameters {
+    float: left;
+    padding-right: 5%;
+    /*background: #ccc;*/
+    height: 70px;
+    /*border: 0.5px solid;*/
+    /*vertical-align: middle;*/
 }
 
-@media only screen and (max-width: 800) {
-    
-}
-
-.smallButton {
-    font-family: 'Raleway', sans-serif; 
-    /*position: absolute;*/
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: white;
-    border: 1px solid #666;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    color: #666;
-    padding: 10px;
-    margin-left: 2%;
-    margin-top: 2%;
-    text-align: center;
-    line-height: 80%;
-    align-items: center;
-    text-decoration: none;
-    display: inline;
-    font-size: 24px;
-    cursor: pointer;   
-}
-.smallButton:hover {
-    background-color: #666;
-    border: 1px solid #666;
-    color: white;
-}
-
-/* CODE FOR THE HELPER MODAL */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 10px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-.modal-content {
-    font-family: 'Raleway', sans-serif; 
-    color: #666;
-    background-color: #fff;
-    margin: auto;
-    padding: 35px;
-    border: 1px solid #888;
-    width: 50%;
-}
-/* The Close Button */
-.close {
-    color: #666;
-    float: top left;
-    font-size: 250%;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.heading {
-    font-weight: 700;
-    color: #666;
-}
-
-/* The container */
+/* The container for the radio button */
 .container {
     display: block;
     position: relative;
-    padding-left: 15%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    padding-left: 30px;
+    /*margin-top: 10px;*/
+    margin-bottom: 10px;
     cursor: pointer;
     font-size: 100%;
     font-weight: 400;
@@ -188,7 +141,7 @@ h2 {
 
 /* Hide the browser's default radio button */
 .container input {
-    position: absolute;
+    position: relative;
     opacity: 0;
 }
 
@@ -201,13 +154,13 @@ h2 {
     height: 18px;
     width: 18px;
     background-color: #fff;
-    border: 1px solid #666;
+    border: 1px solid #959188;
     border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: #F9ECE3;
 }
 
 /* When the radio button is checked, add a blue background */
@@ -229,64 +182,218 @@ h2 {
 
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
- 	top: 3px;
-	left: 3px;
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: #666;
+    top: 3px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #959188;
 }
 
+
+
 /*Styles for sliders*/
-#slidecontainer {
-    width: 80%;
-    padding-top: 10px;
+.slidecontainer {
+    /*width: 80%;*/
+    /*padding-right: 40px;*/
+    /*float: left;*/
+    margin-top: 10px;
+
+
 }
 .slider {
     -webkit-appearance: none;
-    width: 100%;
+    width: 210px;
     height: 2px;
     /*border-radius: 5px;*/
-    background: #bbb;
+    background: #D9C0B0;
     outline: none;
-    opacity: 0.7;
+    opacity: 1;
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
 
-.slider:hover {
+/*.slider:hover {
     opacity: 1;
-}
+}*/
 
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 15px;
     height: 15px;
-    border: 1px solid #666;
+    border: 1px solid #959188;
     border-radius: 50%;
-    background: #666;
+    background: #959188;
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
     width: 15px;
     height: 15px;
-    border: 1px solid #666;
+    border: 1px solid #959188;
     border-radius: 50%;
-    background: #666;
+    background: #959188;
     cursor: pointer;
 }
+
+#buttons {
+    font-family: 'Raleway', sans-serif; 
+    float: left;
+    position: relative; 
+    /*text-align: left; */
+    width: 100%; 
+    /*background: #b3b3b3;*/
+    padding-top: 1%;
+    /*padding-left: 15%;*/
+    text-align: center;
+}
+
+/*button {
+    padding-right: 10%;
+}*/
+
+#saveButton {
+    font-family: 'Raleway', sans-serif; 
+	background-color: #F9ECE3;
+    border: none;
+    /*border-radius: 7px;*/
+    width: 130px;
+    color: #040707;
+    padding: 12px;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    /*font-weight: bold;*/
+    /*margin: 4px 2px;*/
+    cursor: pointer;
+}
+#saveButton:hover {
+    background-color: #D9C0B0;
+/*    border: 1px solid #666;*/
+    color: #040707;
+}
+
+#genButton {
+    font-family: 'Raleway', sans-serif; 
+    background-color: #905E3A;
+    border: none;
+    /*border-radius: 7px;*/
+    width: 130px;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    /*font-weight: bold;*/
+    /*margin: 4px 2px;*/
+    cursor: pointer;
+}
+#genButton:hover {
+    background-color: #462522;
+    /*border: 1px solid #666;*/
+    color: #fff;
+}
+
+
+
+.smallButton {
+    font-family: 'Raleway', sans-serif; 
+    position: fixed;
+    bottom: 20px;
+    right: 10%;
+    background-color: white;
+    border: 1px solid #959188;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: #959188;
+    padding: 1%;
+    margin-left: 2%;
+    margin-top: 2%;
+    text-align: center;
+    line-height: 80%;
+    align-items: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 24px;
+    cursor: pointer;   
+}
+.smallButton:hover {
+    background-color: #F9ECE3;
+    /*border: 1px solid #666;*/
+    /*color: white;*/
+}
+
+/* CODE FOR THE HELPER MODAL */
+@media only screen and (max-width: 800) {
+    
+}
+
+
+.modal-content {
+    font-family: 'Raleway', sans-serif; 
+    color: #666;
+    background-color: #F9ECE3;
+    margin-left: 5%;
+    padding: 10px;
+    font-size: 70%;
+    /*border: 1px solid #888;*/
+    width: 70%;
+}
+/* The Close Button */
+.close {
+    color: #666;
+    float: top left;
+    font-size: 250%;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.heading {
+    font-weight: 700;
+    color: #666;
+}
+
+
 
 ol {
     padding-left: 12px;
     /*list-style-type: none;*/
 }
 
+#patternColumn {
+    font-family: 'Raleway', sans-serif; 
+    position: relative; 
+    /*text-align: center; */
+    /*float: left; */
+    margin-left: 156px;
+    /*margin-right: 156px;*/
+    /*padding-top: 20px;*/
+    width: 78%; 
+    /*background: #e6e6e6;*/
+    /*border-bottom: 1px solid #666;
+    border-bottom-style: dotted;*/
+}
+
 #pattern {
     background: #fff; 
     height: 100%; 
-    /*width: 100%; */
+    width: 100%; 
     float: left; 
     position: relative;
+}
+
+#patternDiv {
+    display: none;
 }
