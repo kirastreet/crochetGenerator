@@ -33,22 +33,17 @@ var normal = true;
 var checked = false;
 var helper = false;
 
-//var initStitchNum = 6;
-//var equivInitStitchNum;
 var saveNum = 1;
 var incCounter; // keeps track of the number of increase rounds
-// var incNum;
-// var stitchInd; //variable for the random stitch index
-// var stitchIndTwo;
-// var basicStitchInd;
-// var specialStitchInd;
-// var incChange;
 
 var r = 190;
 var i;
 
 var replaceCheck = false;
 var stitchScale = 0.2;
+var rowXTranslate = 270;
+var rowYTranslate = -150;
+var rowStitchDist = 70;
 
 var probPattern;
 var index;
@@ -114,20 +109,24 @@ function preload() {
 
 function setup() {
   if (windowWidth > 800) { // for desktop
-    createCanvas(3*windowWidth/4, windowHeight); 
-    stitchScale = 0.2;
-    r = 190; 
+    createCanvas(windowWidth, 0.85*windowHeight); 
+    stitchScale = 0.17;
+    r = 170; 
+    rowYTranslate = -150;
   }
   else if (windowWidth >= 1800) { // for large desktop
     createCanvas(2.4*windowWidth/4, windowHeight);
-    stitchScale = 0.2;
-    r = 190; 
+    stitchScale = 0.17;
+    r = 170; 
   }
   else { // for mobile
     //createCanvas(windowWidth, 6*windowHeight/5);
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth, 0.75*windowHeight);
     stitchScale = 0.12;
     r = 150; 
+    rowYTranslate = -250;
+    rowXTranslate = -50;
+    rowStitchDist = 30;
   }
   
   stitches[0] = chain;
@@ -332,7 +331,7 @@ function draw() {
     translate(100, 500);
   }
 
-  // UNLIKELY AND ROUNDS
+  // Likely AND ROUNDS
     
     if (!randomCheck && roundCheck) {
       for (var j = 1; j <= rows; j++) {
@@ -344,7 +343,7 @@ function draw() {
           var chainRound = new CrochetRound(stitches[index], stitches[1]);
           chainRound.repeatAround(incNum, j*r);
           lastStitch = index;
-          }
+        }
         else {
           index = patternProbFollowing();
           incNum = j*initStitchNum;
@@ -352,9 +351,31 @@ function draw() {
           var chainRound = new CrochetRound(stitches[index], stitches[1]);
           chainRound.repeatAround(incNum, j*r);
           lastStitch = index;
-          }
         }
+      }
+    }
 
+    //Likely AND ROWS
+    else if (!randomCheck && !roundCheck) {
+      for (var j = 1; j <= rows; j++) {
+        if (j == 1) {
+          
+          index = patternProbStart();
+          var likelyRow = new CrochetRound(stitches[index], stitches[1]);
+          likelyRow.rowRepeat(initStitchNum, j*r);
+          lastStitch = index;
+        }
+        else {
+          index = patternProbFollowing();
+          var likelyRow = new CrochetRound(stitches[index], stitches[1]);
+          likelyRow.rowRepeat(initStitchNum, j*r);
+          lastStitch = index;
+        }
+        var incSpace = j - 2;
+      }
+    }
+
+    //COMMENTED OUT PATTERN WORDS IF NEEDED FOR LATER
       // if (i == 1) {
       //   pattern = "Repeat around " + initStitchNum + " double crochet stitches";
       // }
@@ -373,7 +394,6 @@ function draw() {
       // }
       // listText += "</ol>";
       // document.getElementById("patternDiv").innerHTML = listText;
-    }
 
   for (i = 1; i <= rows; i++) {
     var stitchInd = round(random(0,stitches.length-1));
@@ -383,12 +403,6 @@ function draw() {
 
     var incNum = i*initStitchNum;
 
-
-    
-
-    //document.getElementById("patternDiv");
-    //pattern = "Round " + i + ": " + incNum + " " + stitchNames[stitchInd] + " stitches\n"; PATTERN STYLE
-
     
     //RANDOM AND ROUNDS
     if (randomCheck && roundCheck) {
@@ -396,34 +410,36 @@ function draw() {
       var chainRound = new CrochetRound(stitches[stitchInd], stitches[stitchIndTwo]);
       chainRound.repeatAround(incNum, i*r);
 
-      pattern = incNum + " " + stitchNames[stitchInd] + " stitches\n";
-      patternArray.push(pattern);
-      pLen = patternArray.length;
-      listText = "<ol>";
-      for (var j = 0; j < pLen; j++) {
-        listText += "<li>" + patternArray[j] + "</li>";
-      }
-      listText += "</ol>";
-      document.getElementById("patternDiv").innerHTML = listText;
+      // pattern = incNum + " " + stitchNames[stitchInd] + " stitches\n";
+      // patternArray.push(pattern);
+      // pLen = patternArray.length;
+      // listText = "<ol>";
+      // for (var j = 0; j < pLen; j++) {
+      //   listText += "<li>" + patternArray[j] + "</li>";
+      // }
+      // listText += "</ol>";
+      // document.getElementById("patternDiv").innerHTML = listText;
     }
 
-    //UNLIKELY AND ROWS
-    else if (!randomCheck && !roundCheck) {
-      var doubleIncrease = new CrochetRound(basicStitches[2], basicStitches[3]);
-      doubleIncrease.rowRepeat(initStitchNum, i*r);
-      var incSpace = i - 2;
+    
 
-      pattern = initStitchNum + " " + basicStitchesNames[2] + " stitches\n";
+//COMMENTED OUT WORD PATTERN
+      // pattern = initStitchNum + " " + basicStitchesNames[2] + " stitches\n";
 
-      patternArray.push(pattern);
-      pLen = patternArray.length;
-      listText = "<ol>";
-      for (var j = 0; j < pLen; j++) {
-        listText += "<li>" + patternArray[j] + "</li>";
-      }
-      listText += "</ol>";
-      document.getElementById("patternDiv").innerHTML = listText;
-    }
+      // patternArray.push(pattern);
+      // pLen = patternArray.length;
+      // listText = "<ol>";
+      // for (var j = 0; j < pLen; j++) {
+      //   listText += "<li>" + patternArray[j] + "</li>";
+      // }
+      // listText += "</ol>";
+      // document.getElementById("patternDiv").innerHTML = listText;
+
+
+
+
+
+
 
     //RANDOM AND ROWS
     else if (randomCheck && !roundCheck) {
@@ -431,27 +447,21 @@ function draw() {
       var chainRound = new CrochetRound(stitches[stitchInd], stitches[stitchIndTwo]);
       chainRound.rowRepeat(initStitchNum, i*r);
 
-      pattern = initStitchNum + " " + stitchNames[stitchInd] + " stitches\n";
-      patternArray.push(pattern);
-      pLen = patternArray.length;
-      listText = "<ol>";
-      for (var j = 0; j < pLen; j++) {
-        listText += "<li>" + patternArray[j] + "</li>";
-      }
-      listText += "</ol>";
-      document.getElementById("patternDiv").innerHTML = listText;
+      // pattern = initStitchNum + " " + stitchNames[stitchInd] + " stitches\n";
+      // patternArray.push(pattern);
+      // pLen = patternArray.length;
+      // listText = "<ol>";
+      // for (var j = 0; j < pLen; j++) {
+      //   listText += "<li>" + patternArray[j] + "</li>";
+      // }
+      // listText += "</ol>";
+      // document.getElementById("patternDiv").innerHTML = listText;
     }
     
     incCounter++;
 
   }
   pop();
-
-       //patternRound = new CrochetRound(stitches[stitchInd], stitches[stitchIndTwo]); // works to make a random pattern on each round
-       //patternRound.patternStitch(incNum, i*r);
-
-       // PATTERN WORDS
-       //pattern = "Round " + i + ": " + equivInitStitchNum + " " + stitchNames[stitchInd] + " stitches";
 }
 
 
@@ -490,12 +500,13 @@ function CrochetRound(basicStitch, specialStitch) {
   this.rowRepeat = function(num, dist) {
     for (var j = 0; j < num; j++) {
       push();
-      var x = 70*j;
-      //translate(-300, 150);
-      //translate(-250-10*num/2, 150+10*num/2);
-      //translate(x*num/2, -10*num/2);
+      var x = rowStitchDist*j;
+      translate(rowXTranslate, rowYTranslate);
+      // translate(-300, 150);
+      // translate(-250-10*num/2, 150+10*num/2);
+      // translate(x*num/2, -10*num/2);
       translate(x, 0);
-      scale(0.2);
+      scale(stitchScale);
       image(this.basic, 0, -dist);
       pop();
     }
